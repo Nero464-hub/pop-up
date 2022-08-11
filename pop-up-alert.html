@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            box-sizing: border-box;
+        }
+        .modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* background-color: red; */
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal > .close-div{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            left: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        .modal-content{
+            width: 50%;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: white;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .modal-content > div{
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            position: relative;
+        }
+        .close-span{
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 25px;
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .alert-div{
+            text-align: center;
+            gap: 20px;
+        }
+        .alert-div p, .alert-div h3{
+            margin: 0;
+        }
+        @keyframes ani {
+            0%{
+                top:-100%
+            }
+            100%{
+                top:0%
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>Hello World</p>
+    <button id="btn">click me</button>
+
+    <div id="modal" class="modal">
+        <div class="close-div"></div>
+        <div class="modal-content">
+            <span class="close-span">&times</span>
+            <div class="alert-div">
+                <h3>message</h3>
+                <p>please wait...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = () =>{
+            console.log('hello')
+            const modal = document.getElementById('modal');
+            let allDiv = document.querySelectorAll('.modal-content > div')
+            allDiv.forEach(div =>{
+                div.style.display = "none"
+            })
+            modal.style.display = 'flex'
+            allDiv[0].style.display = 'flex';
+        }
+
+    </script>
+</body>
+</html>
