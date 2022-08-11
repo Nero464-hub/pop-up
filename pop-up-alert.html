@@ -88,12 +88,19 @@
             justify-content: space-between;
             width: 100%;
         }
+        .prompt-div > div{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>
     <p>Hello World</p>
     <button id="btn">show Alert</button>
     <button id="btn2" onclick="showModal(1)">show confirm</button>
+    <button onclick="showModal(2)">show Prompt</button>
 
     <div id="modal" class="modal">
         <div class="close-div" onclick="closeModal()"></div>
@@ -106,8 +113,16 @@
             <div class="confirm-div">
                 <p>Do you want to perform this task?</p>
                 <div>
-                    <button>ok</button>
-                    <button >cancel</button>
+                    <button onclick="handleConfirm(0)">ok</button>
+                    <button onclick="handleConfirm(1)">cancel</button>
+                </div>
+            </div>
+            <div class="prompt-div">
+                <h3>please enter your age</h3>
+                <input type="text" value="16" id="inp">
+                <div>
+                    <button onclick="handlePrompt(1)">ok</button>
+                    <button onclick="handlePrompt(0)">cancel</button>
                 </div>
             </div>
         </div>
@@ -138,8 +153,29 @@
                 div.style.display = "none"
             })
         }
-        const handleConfirm = ()=>{
-
+        const handleConfirm = (ind)=>{
+            closeModal()
+            if(ind ==  0){
+                alert('1')
+            }
+            else{
+                alert('0')
+            }
+        }
+        const handlePrompt = (arg) =>{
+            closeModal()
+            let age = document.getElementById('inp');
+            if(arg == 1){
+                    if(age.value == null || age.value ==""){
+                    // alert("invalid age")
+                    return;
+                }
+            
+                else{
+                    alert(age.value)
+                }
+            }
+            
         }
     </script>
 </body>
