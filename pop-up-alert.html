@@ -78,12 +78,22 @@
         .animate-modal {
             animation: ani .5s forwards;
         }
+        .confirm-div > p{
+            text-align: center;
+            font-size: 18px;
+
+        }
+        .confirm-div > div{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <p>Hello World</p>
     <button id="btn">show Alert</button>
-    <button id="btn2">show comfirm</button>
+    <button id="btn2" onclick="showModal(1)">show confirm</button>
 
     <div id="modal" class="modal">
         <div class="close-div" onclick="closeModal()"></div>
@@ -93,15 +103,22 @@
                 <h3>message</h3>
                 <p>please wait...</p>
             </div>
+            <div class="confirm-div">
+                <p>Do you want to perform this task?</p>
+                <div>
+                    <button>ok</button>
+                    <button >cancel</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
         var btn = document.getElementById('btn');
         btn.onclick = () =>{
-            createModal()
+            showModal(0)
         }
-        const createModal =() =>{
+        const showModal =(index) =>{
             console.log('hello')
             const modal = document.getElementById('modal');
             document.querySelector('.modal-content').classList.remove('animate-modal')
@@ -110,7 +127,7 @@
                 div.style.display = "none"
             })
             modal.style.display = 'flex'
-            allDiv[0].style.display = 'flex';
+            allDiv[index].style.display = 'flex';
             document.querySelector('.modal-content').classList.add('animate-modal')
         }
         const closeModal = ()=>{
@@ -120,6 +137,9 @@
             allDiv.forEach(div =>{
                 div.style.display = "none"
             })
+        }
+        const handleConfirm = ()=>{
+
         }
     </script>
 </body>
