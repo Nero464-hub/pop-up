@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>pop-up</title>
     <style>
         body{
             box-sizing: border-box;
@@ -82,12 +82,13 @@
 </head>
 <body>
     <p>Hello World</p>
-    <button id="btn">click me</button>
+    <button id="btn">show Alert</button>
+    <button id="btn2">show comfirm</button>
 
     <div id="modal" class="modal">
-        <div class="close-div"></div>
+        <div class="close-div" onclick="closeModal()"></div>
         <div class="modal-content">
-            <span class="close-span">&times</span>
+            <span class="close-span" onclick="closeModal()">&times</span>
             <div class="alert-div">
                 <h3>message</h3>
                 <p>please wait...</p>
@@ -98,6 +99,9 @@
     <script>
         var btn = document.getElementById('btn');
         btn.onclick = () =>{
+            createModal()
+        }
+        const createModal =() =>{
             console.log('hello')
             const modal = document.getElementById('modal');
             document.querySelector('.modal-content').classList.remove('animate-modal')
@@ -109,7 +113,14 @@
             allDiv[0].style.display = 'flex';
             document.querySelector('.modal-content').classList.add('animate-modal')
         }
-
+        const closeModal = ()=>{
+            document.getElementById('modal').style.display ='none'
+            document.querySelector('.modal-content').classList.remove('animate-modal')
+            let allDiv = document.querySelectorAll('.modal-content > div')
+            allDiv.forEach(div =>{
+                div.style.display = "none"
+            })
+        }
     </script>
 </body>
 </html>
