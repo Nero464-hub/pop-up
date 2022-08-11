@@ -41,6 +41,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            top: -100%;
 
         }
         .modal-content > div{
@@ -48,6 +49,7 @@
             display: none;
             flex-direction: column;
             position: relative;
+            
         }
         .close-span{
             position: absolute;
@@ -73,6 +75,9 @@
                 top:0%
             }
         }
+        .animate-modal {
+            animation: ani .5s forwards;
+        }
     </style>
 </head>
 <body>
@@ -95,12 +100,14 @@
         btn.onclick = () =>{
             console.log('hello')
             const modal = document.getElementById('modal');
+            document.querySelector('.modal-content').classList.remove('animate-modal')
             let allDiv = document.querySelectorAll('.modal-content > div')
             allDiv.forEach(div =>{
                 div.style.display = "none"
             })
             modal.style.display = 'flex'
             allDiv[0].style.display = 'flex';
+            document.querySelector('.modal-content').classList.add('animate-modal')
         }
 
     </script>
